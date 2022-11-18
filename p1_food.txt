@@ -1,0 +1,31 @@
+class Solution {
+    public String solution(int[] food) {
+        String answer = "";
+        
+        int[] foodNum = new int[food.length-1];
+        
+        for (int i=1; i<food.length; i++) {
+            foodNum[i-1] = food[i]/2;
+        }
+        
+        for (int i=0; i<foodNum.length; i++) {
+            int count = 0;
+            while (count < foodNum[i]) {
+                answer += i+1;
+                count++;
+            }
+        }
+        
+        answer += 0;
+        
+        for (int i=0; i<foodNum.length; i++) {
+            int count = 0;
+            while (count < foodNum[foodNum.length-1-i]) {
+                answer += foodNum.length-i;
+                count++;
+            }
+        }
+        
+        return answer;
+    }
+}
