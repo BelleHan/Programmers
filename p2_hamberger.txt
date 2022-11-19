@@ -1,0 +1,44 @@
+import java.util.ArrayList;
+
+class Solution {
+    public int solution(int[] ingredient) {
+        int answer = 0;
+        
+        ArrayList burger = new ArrayList();
+        burger.add(1);
+        burger.add(2);
+        burger.add(3);
+        burger.add(1);
+        
+        ArrayList list = new ArrayList();
+        
+        for (int element : ingredient) {
+            list.add(element);
+        }
+        
+        for (int i=0; i<list.size(); i++) {
+            if (list.size() >= 4 && list.size()-i >= 4) {
+                
+                ArrayList temp = new ArrayList();
+                temp.add(list.get(i));
+                temp.add(list.get(i+1));
+                temp.add(list.get(i+2));
+                temp.add(list.get(i+3));
+
+                if (temp.equals(burger)) {
+                    answer++;
+                    
+                    list.remove(i+3);
+                    list.remove(i+2);
+                    list.remove(i+1);
+                    list.remove(i);
+                    
+                    i=-1;
+                }
+            }
+            
+        } 
+                
+        return answer;
+    }
+}
