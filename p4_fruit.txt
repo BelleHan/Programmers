@@ -1,0 +1,24 @@
+class Solution {
+    public int solution(int k, int m, int[] score) {
+        int answer = 0;
+   
+        int[] appleNum = new int[k];
+        
+        for (int i=1; i<=k; i++) {
+        	for (int j=0; j<score.length; j++) {
+        		if (score[j]==i) appleNum[i-1]++;
+        	}
+        }
+
+        for (int i=k; i>=1; i--) {
+        	if (appleNum[i-1] >= m) {
+        		answer += (appleNum[i-1]/m) * i * m;
+        		if (i!=1) appleNum[i-2] += appleNum[i-1]%m;
+        	} else {
+        		if (i!=1) appleNum[i-2] += appleNum[i-1]%m;
+        	}
+        }
+        
+        return answer;
+    }
+}
